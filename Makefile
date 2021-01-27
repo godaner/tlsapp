@@ -1,20 +1,20 @@
 build:buildclientwin buildclientamd buildserverwin buildserveramd clearbuild
 buildclientwin:
-	-rm c.exe
-	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o c.exe ./cliapp/client.go
-	-upx -9 c.exe
+	-rm ./bin/cwin64.exe
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./bin/cwin64.exe ./cliapp/client.go
+	-upx -9 ./bin/cwin64.exe
 buildclientamd:
-	-rm c
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o c ./cliapp/client.go
-	-upx -9 c
+	-rm ./bin/clinux
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/clinux ./cliapp/client.go
+	-upx -9 ./bin/clinux
 buildserverwin:
-	-rm s.exe
-	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o s.exe ./serapp/server.go
-	-upx -9 s.exe
+	-rm ./bin/swin64.exe
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./bin/swin64.exe ./serapp/server.go
+	-upx -9 ./bin/swin64.exe
 buildserveramd:
-	-rm s
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o s ./serapp/server.go
-	-upx -9 s
+	-rm ./bin/slinux
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/slinux ./serapp/server.go
+	-upx -9 ./bin/slinux
 clearbuild:
 	-rm *.upx
 
