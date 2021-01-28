@@ -1,5 +1,5 @@
 # tlsapp
-tlsapp
+tlsapp , example for tls.
 # source code
     cliapp/ , serapp/
 # bin
