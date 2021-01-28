@@ -1,21 +1,21 @@
-build:buildclientwin buildclientamd buildserverwin buildserveramd clearbuild
-buildclientwin:
+build:buildclientwin64 buildclientlinux buildserverwin64 buildserverlinux clearupx
+buildclientwin64:
 	-rm ./bin/cwin64.exe
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./bin/cwin64.exe ./cliapp/client.go
 	-upx -9 ./bin/cwin64.exe
-buildclientamd:
+buildclientlinux:
 	-rm ./bin/clinux
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/clinux ./cliapp/client.go
 	-upx -9 ./bin/clinux
-buildserverwin:
+buildserverwin64:
 	-rm ./bin/swin64.exe
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./bin/swin64.exe ./serapp/server.go
 	-upx -9 ./bin/swin64.exe
-buildserveramd:
+buildserverlinux:
 	-rm ./bin/slinux
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/slinux ./serapp/server.go
 	-upx -9 ./bin/slinux
-clearbuild:
+clearupx:
 	-rm *.upx
 
 cert:
@@ -25,5 +25,5 @@ cert:
 	certstrap sign server --CA ca
 	certstrap request-cert -cn client
 	certstrap sign client --CA ca
-certclear:
+clearcert:
 	rm -r out/
